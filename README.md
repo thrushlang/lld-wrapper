@@ -2,8 +2,17 @@
 
 ## LLVM Linker Wrapper
 
-It is a small library that serves as a bridge to the LLVM Linker (LLD) API from C++ to Rust.
+A small library that bridges the C++ LLVM Linker (LLD) API to Rust, for use with the Thrush compiler as an integrated linker.
 
-### References
+### Flavors
+
+Flavors represent the executable assembler or binary variants that you can link using the library.
+
+- **COFF** (Windows)
+- **ELF** (Linux)
+- **Mach0** (MacOS)
+- **WASM** (WebAssembly)
+
+#### References
 
 - **[LLVM Linker (LLD)](https://lld.llvm.org/)**
