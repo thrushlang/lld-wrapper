@@ -1,5 +1,5 @@
-#include <lld/Common/CommonLinkerContext.h>
-#include <lld/Common/Driver.h>
+#include "../include/lld-17/Common/CommonLinkerContext.h"
+#include "../include/lld-17/Common/Driver.h"
 
 #include <cstdlib>
 #include <iostream>
@@ -18,6 +18,7 @@ const char *alloc_string(const std::string &str) {
     if (size > 0) {
         char *strPtr = reinterpret_cast<char *>(malloc(size + 1));
         memcpy(strPtr, str.c_str(), size + 1);
+
         return strPtr;
     }
     
@@ -38,8 +39,7 @@ extern "C" {
     };
 
     void lld_free(LLDInvokeResult *result) {
-        if (result->messages) 
-                free(reinterpret_cast<void *>(const_cast<char *>(result->messages)));
+        if (result->messages) free(reinterpret_cast<void *>(const_cast<char *>(result->messages)));
     }
 }
 
@@ -63,8 +63,10 @@ extern "C" {
         LLDInvokeResult result;
 
         std::string outputString, errorString;
+
         llvm::raw_string_ostream outputStream(outputString);
         llvm::raw_string_ostream errorStream(errorString);
+        
         std::unique_lock<std::mutex> lock(concurrencyMutex);
 
         auto link_fn = ::getLinkerForFlavor(flavor);
@@ -78,7 +80,7 @@ extern "C" {
         }
 
         result.success = link_fn(args, outputStream, errorStream, false, false);
-        result.messages = alloc_string(errorStream.str() + outputStream.str());
+        result.messages = ::alloc_string(errorStream.str() + outputStream.str());
 
         lld::CommonLinkerContext::destroy();
 

@@ -1,14 +1,14 @@
 pub mod flavor;
 pub mod result;
 
+use crate::flavor::LLDFlavor;
+use crate::result::{LLDInvokeResult, LLDResult};
+
 use std::ffi::CStr;
 use std::{
     ffi::CString,
     os::raw::{c_char, c_int},
 };
-
-use crate::flavor::LLDFlavor;
-use crate::result::{LLDInvokeResult, LLDResult};
 
 unsafe extern "C" {
     unsafe fn link_with_lld(
