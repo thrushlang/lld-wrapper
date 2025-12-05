@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+title: LLVM Linker Wrapper
+message: >-
+  If you use this software in your work, please cite it
+  using the following metadata...
+type: software
+authors:
+  - given-names: Stevens Benavides
+    family-names: DevCheckOG
+    email: foss.stevens.benavides@gmail.com
+repository-code: 'https://github.com/thrushlang/lld-wrapper'
+url: 'https://github.com/thrushlang'
+abstract: LLVM Linker (LLD) wrapper in Rust.
+keywords:
+  - Programming Language
+  - Thrush Programming Language
+license: GPL-3.0
