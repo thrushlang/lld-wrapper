@@ -1,5 +1,5 @@
 #[repr(C)]
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 pub enum LLDFlavor {
     Elf = 0,
     Wasm = 1,
