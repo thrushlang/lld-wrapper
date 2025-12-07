@@ -22,7 +22,7 @@ lazy_static::lazy_static! {
             abort_with_message("Unsupported OS for fetching the LLVM config binary. This build script only supports Linux and Windows.");
         };
 
-        let llvm_build_path: PathBuf = sys_user_home.join("thrushlang/backends/llvm/build");
+        let llvm_build_path: PathBuf = sys_user_home.join(".thrushlang/backends/llvm/build");
 
         if !llvm_build_path.exists() {
             abort_with_message(&format!(
